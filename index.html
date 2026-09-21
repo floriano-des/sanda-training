@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0d10" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="description" content="Rotina semanal de Sanda com checklist, cargas, timer e notas de treino." />
+  <title>Sanda Training</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">PREPARAÇÃO SANDA</p>
+        <h1 id="pageTitle">Treino da semana</h1>
+      </div>
+      <button class="icon-button" id="resetWeekBtn" type="button" aria-label="Limpar progresso da semana" title="Limpar progresso da semana">↺</button>
+    </header>
+
+    <main class="app-main">
+      <section class="today-card" id="todayCard">
+        <div>
+          <span class="today-label">Hoje</span>
+          <strong id="todayName">Segunda</strong>
+          <p id="todayFocus">Força + potência</p>
+        </div>
+        <button class="primary-button compact" id="goTodayBtn" type="button">Abrir treino</button>
+      </section>
+
+      <section class="progress-panel" aria-label="Progresso semanal">
+        <div class="progress-copy">
+          <span>Progresso semanal</span>
+          <strong id="weekProgressText">0%</strong>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <div class="progress-bar" id="weekProgressBar"></div>
+        </div>
+      </section>
+
+      <nav class="day-tabs" id="dayTabs" aria-label="Dias de treino"></nav>
+
+      <section id="workoutContainer" class="workout-container" aria-live="polite"></section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegação principal">
+      <button class="bottom-nav-item active" data-view="workout" type="button">
+        <span class="nav-icon">▦</span>
+        <span>Treino</span>
+      </button>
+      <button class="bottom-nav-item" data-view="timer" type="button">
+        <span class="nav-icon">⏱</span>
+        <span>Timer</span>
+      </button>
+      <button class="bottom-nav-item" data-view="notes" type="button">
+        <span class="nav-icon">✎</span>
+        <span>Notas</span>
+      </button>
+    </nav>
+  </div>
+
+  <template id="exerciseTemplate">
+    <article class="exercise-card">
+      <div class="exercise-card-top">
+        <button class="exercise-check" type="button" aria-label="Marcar exercício como concluído">✓</button>
+        <div class="exercise-heading">
+          <h3 class="exercise-name"></h3>
+          <p class="exercise-prescription"></p>
+        </div>
+        <button class="exercise-media-button" type="button" aria-label="Ver demonstração do exercício">
+          <img class="exercise-thumbnail" alt="" loading="lazy" decoding="async" />
+          <span class="exercise-media-icon" aria-hidden="true">▶</span>
+        </button>
+        <button class="exercise-toggle" type="button" aria-label="Expandir exercício">⌄</button>
+      </div>
+      <div class="exercise-details">
+        <p class="exercise-note"></p>
+        <div class="set-list"></div>
+      </div>
+    </article>
+  </template>
+
+  <dialog class="media-dialog" id="exerciseMediaDialog" aria-labelledby="mediaDialogTitle">
+    <div class="media-dialog-shell">
+      <div class="media-dialog-header">
+        <div>
+          <p class="eyebrow">DEMONSTRAÇÃO</p>
+          <h2 id="mediaDialogTitle"></h2>
+        </div>
+        <button class="media-dialog-close" id="mediaDialogClose" type="button" aria-label="Fechar demonstração">×</button>
+      </div>
+      <div class="media-dialog-content" id="mediaDialogContent"></div>
+      <p class="media-disclaimer">Use a demonstração como referência visual. Ajuste carga e técnica com orientação profissional.</p>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
